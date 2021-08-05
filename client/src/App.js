@@ -95,7 +95,7 @@ function App() {
       {...viewport}
       mapboxApiAccessToken={process.env.REACT_APP_MAPBOX}
       onViewportChange={nextViewport => setViewport(nextViewport)}
-      mapStyle='mapbox://styles/sebastiangreen/ckrnp8ur54xux17mswwup4dhk'
+      mapStyle={process.env.REACT_APP_MAP_STYLES}
       onDblClick={handlePinClick}
     > 
 
