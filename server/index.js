@@ -4,9 +4,12 @@ const mongoose = require('mongoose');
 const pinRoute = require('./routes/pin');
 const userRoute = require('./routes/users');
 require('dotenv').config();
-const PORT = process.env.PORT;
-const DB_URL = process.env.DB_URL;
-const DB_NAME = process.env.DB_NAME;
+// const PORT = process.env.PORT;
+const PORT = 3001;
+// const DB_URL = process.env.DB_URL;
+const DB_URL = 'mongodb://localhost:27017/'
+// const DB_Name = process.env.DB_NAME;
+const DB_NAME = 'moviemapper';
 const app = express();
 
 app.use(cors());
