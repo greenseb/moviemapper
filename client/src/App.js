@@ -18,7 +18,11 @@ function App() {
     height: '80vh',
     latitude: 43.3781,
     longitude: -44.436,
+<<<<<<< HEAD
     zoom: 2.7,
+=======
+    zoom: 2.7
+>>>>>>> main
   });
 
   const [currentPinId, setCurrentPinId] = useState(null);
@@ -32,7 +36,13 @@ function App() {
   const [showRegister, setShowRegister] = useState(false);
   const [rating, setRating] = useState(0);
 
+<<<<<<< HEAD
 
+=======
+  const REACT_APP_API = 'http://localhost:3001/routes/pins';
+  const REACT_APP_MAPBOX =
+    'pk.eyJ1Ijoic2ViYXN0aWFuZ3JlZW4iLCJhIjoiY2tybmxkMnI4MGVrdTJvbzk1ZDViMDFpaCJ9.J3z9hhV88A9oCQ2511510w';
+>>>>>>> main
 
   const getAllPins = async () => {
     try {
@@ -64,7 +74,7 @@ function App() {
       description: movie,
       rating,
       latitude: newPin.latitude,
-      longitude: newPin.longitude,
+      longitude: newPin.longitude
     };
     try {
       const res = await axios.post(REACT_APP_API, newEntry);
@@ -136,7 +146,11 @@ function App() {
                   fontSize: viewport.zoom * 8.5,
                   color:
                     pin.username === currentUser ? 'lightcoral' : '#8b95c9',
+<<<<<<< HEAD
                   cursor: 'pointer',
+=======
+                  cursor: 'pointer'
+>>>>>>> main
                 }}
                 onClick={() =>
                   handlePopupClick(pin._id, pin.latitude, pin.longitude)
