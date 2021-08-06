@@ -2,7 +2,21 @@ import { Star } from '@material-ui/icons';
 import './info.css';
 import moment from 'moment';
 
-export default function Info({pin}) {
+type Pin = { pin: {
+  _id: string,
+  username: string,
+  title: string,
+  description: string,
+  rating: number,
+  latitude: number,
+  longitude: number,
+  createdAt: string,
+  updatedAt: string,
+  __v: number
+}
+}
+
+export default function Info({pin}: Pin) {
   return (
     <>
     <label>Location</label>
