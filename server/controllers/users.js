@@ -17,7 +17,7 @@ exports.userRegister = async (req,res) => {
   }
 };
 
-exports.getRegisteredUser = async (req,res) => {
+exports.getRegisteredUsers = async (req,res) => {
   try {
     const users = await User.find();
     res.status(200).json(users);
