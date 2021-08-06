@@ -2,7 +2,6 @@ const express = require('express');
 const router = require('../router');
 const supertest = require('supertest');
 const User = require('../models/user');
-const mongoose = require('mongoose');
 
 
 describe('Users tests', () => {
@@ -23,10 +22,17 @@ describe('Users tests', () => {
     await User.deleteMany();
   })
 
-  it('should get all registered users', async (done) => {
+  it('should register users', async (done) => {
+    
+    const user = {
+      username: "David",
+      email: "david@david.me",
+      password: "david"
+    }
+    const res = await request.post('/routes/users/register', ).send({user})
 
-    const res = await request.get()
-
+    const username = await User.findOne({user})
+    expect(username).toBe(user.username)
     done()
   })
 
