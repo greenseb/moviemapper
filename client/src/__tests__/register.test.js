@@ -4,23 +4,26 @@ import Register from '../components/register/register';
 import {render, waitFor, screen} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom/extend-expect'
-import { ExpansionPanelActions } from '@material-ui/core'
 
 
-// jest.mock('../components/register/register', () => {
-//   handleSubmit: () => ({
-//     username: "Alfred",
-//     email: "alfred@aceoptions.com",
-//     password: "alfred"
-//   })
-// })
+jest.mock('../services/ApiService.js', () => ({
+  addUser: () => ({
+    username: "Alfred"
+  })
+}));
 
 test('it registers the users with the correct credentials on button click', async () => {
 
-  const handleSubmit = jest.fn();
   const setShowRegister = jest.fn();
+  const myStorage = {setItem: jest.fn()};
+  const setCurrentUser = jest.fn();
+  const credentials = {username: "Alfred"}
 
-  render(<Register setShowRegister={setShowRegister}/>);
+  render(<Register 
+    setShowRegister={setShowRegister}
+    myStorage={myStorage}
+    setCurrentUser={setCurrentUser}
+    />);
 
   const usernameInput = screen.getByPlaceholderText(/username/);
   const emailInput = screen.getByPlaceholderText(/email/);
@@ -28,16 +31,14 @@ test('it registers the users with the correct credentials on button click', asyn
   const submitBtn = screen.getByRole('button', {name: /Register/i});
 
   // populate
-  userEvent.type(usernameInput, 'tester');
-  userEvent.type(emailInput, 'tester@test.com');
+  userEvent.type(usernameInput, 'Alfred');
+  userEvent.type(emailInput, 'alfred@test.com');
   userEvent.type(passwordInput, 'testerpassword');
   
   // submit form
   await userEvent.click(submitBtn);
 
-  expect(handleSubmit).toHaveBeenCalledTimes(1);
-  // screen.getByText (success message)
-  // screen.getByText (error message)
-
+  expect(myStorage.setItem).toHaveBeenCalledWith("user", credentials.username);
+  expect(setCurrentUser).toHaveBeenCalledWith(credentials.username); 
 
 })

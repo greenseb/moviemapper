@@ -4,7 +4,7 @@ import { useRef, useState } from 'react';
 import axios from 'axios';
 import {addUser} from '../../services/ApiService';
 
-export default function Register({setShowRegister, myStorage, setCurrentUser}) {
+export default function Register({ setShowRegister, myStorage, setCurrentUser }) {
   const nameRef = useRef();
   const emailRef = useRef();
   const passRef = useRef();

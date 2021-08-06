@@ -51,7 +51,7 @@ function App() {
       latitude: newPin.latitude,
       longitude: newPin.longitude,
     };
-    addPin(...newEntry)
+    addPin(newEntry)
   }
 
   const handleLogout = () => {
