@@ -59,9 +59,13 @@ function App() {
     setCurrentUser(null);
   }
  
-  useEffect(async () => {
-    const pins = await getAllPins()
-    setPins(pins)
+  // async fcn inside use effect 
+  // bc callback the useEffect has as the 1st argument cannot return a promise
+  useEffect( () => {
+    (async () => {
+      const pins = await getAllPins()
+      setPins(pins)
+    })()
   },[])
 
   return (

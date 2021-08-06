@@ -19,3 +19,6 @@ export default function Info({pin}) {
             </>
   )
 }
+
+// integration: 
+// test whether the pin is created with the correct info
