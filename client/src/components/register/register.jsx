@@ -4,9 +4,7 @@ import { useRef, useState } from 'react';
 import axios from 'axios';
 import {addUser} from '../../services/ApiService';
 
-export default function Register({setShowRegister}) {
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState(false);
+export default function Register({setShowRegister, myStorage, setCurrentUser}) {
   const nameRef = useRef();
   const emailRef = useRef();
   const passRef = useRef();
@@ -19,13 +17,12 @@ export default function Register({setShowRegister}) {
       password: passRef.current.value
     };
     try {
-      addUser(newUser)
-      setError(false);
-      setSuccess(true);
+      const res = await addUser(newUser)
+      myStorage.setItem('user', res.username);
+      setCurrentUser(res.username);
+      setShowRegister(false);
     } catch (e) {
       console.log(e)
-      setError(true);
-      setSuccess(false);
     }
   }
 
@@ -40,12 +37,6 @@ export default function Register({setShowRegister}) {
         <input type='email' placeholder='email' ref={emailRef}/>
         <input type='password' placeholder='password' ref={passRef}/>
         <button className='registerButton'>Register</button>
-        {success &&
-        <span className='success'>User successfully created, you may log in!</span>
-      }
-        {error &&
-        <span className='failure'>Something went wrong!</span>
-        }
       </form>
       <Close className='registerClose' onClick={()=>setShowRegister(false)}/>
     </div>
