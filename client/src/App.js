@@ -6,6 +6,7 @@ import Register from './components/register/register';
 import Login from './components/login/login';
 import Info from './components/info/info';
 import './App.css';
+import {getAllPins, addPin} from './services/ApiService';
 
 function App() {
   const [viewport, setViewport] = useState({
@@ -16,8 +17,8 @@ function App() {
     zoom: 2.7
   });
   
-  const [currentPinId, setCurrentPinId] = useState(null);
   const myStorage = window.localStorage;
+  const [currentPinId, setCurrentPinId] = useState(null);
   const [currentUser, setCurrentUser] = useState(myStorage.getItem('user'));
   const [location, setLocation] = useState(null);
   const [movie, setMovie] = useState(null);
@@ -26,15 +27,6 @@ function App() {
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
   const [rating, setRating] = useState(0);
-
-  const getAllPins = async () => {
-    try {
-      const res = await axios.get(process.env.REACT_APP_API);
-      setPins(res.data);
-    } catch (e) {
-      console.log(e)
-    }
-  }
 
   const handlePopupClick = (id, lat, long) => {
     setCurrentPinId(id);
@@ -59,26 +51,22 @@ function App() {
       latitude: newPin.latitude,
       longitude: newPin.longitude,
     };
-    try {
-      const res = await axios.post(process.env.REACT_APP_API, newEntry);
-      setPins([...pins, res.data]);
-      setNewPin(null);
-    } catch (e) {
-      console.log(e, 'error here')
-    }
+    addPin(...newEntry)
   }
 
   const handleLogout = () => {
     myStorage.removeItem('user');
     setCurrentUser(null);
   }
-
-  useEffect(() => {
-    getAllPins()
+ 
+  useEffect(async () => {
+    const pins = await getAllPins()
+    setPins(pins)
   },[])
 
   return (
     <div className="App">
+      
       <h1 className='movieMapper'>Movie Mapper<Room className='titleLogo' style={{fontSize:36.2}}></Room></h1>
       {currentUser ? (<button className='button logout' onClick={handleLogout}>Logout</button>) 
       : (<div className='buttons'>

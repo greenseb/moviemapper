@@ -2,6 +2,7 @@ import './register.css'
 import { Room, Close } from '@material-ui/icons'
 import { useRef, useState } from 'react';
 import axios from 'axios';
+import {addUser} from '../../services/ApiService';
 
 export default function Register({setShowRegister}) {
   const [success, setSuccess] = useState(false);
@@ -18,7 +19,7 @@ export default function Register({setShowRegister}) {
       password: passRef.current.value
     };
     try {
-      await axios.post('http://localhost:3001/routes/users/register', newUser)
+      addUser(newUser)
       setError(false);
       setSuccess(true);
     } catch (e) {

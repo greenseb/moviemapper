@@ -2,6 +2,7 @@ import './login.css'
 import { Room, Close } from '@material-ui/icons'
 import { useRef, useState } from 'react';
 import axios from 'axios';
+import {findUser} from '../../services/ApiService';
 
 export default function Login({setShowLogin, myStorage, setCurrentUser}) {
   const [error, setError] = useState(false);
@@ -16,9 +17,9 @@ export default function Login({setShowLogin, myStorage, setCurrentUser}) {
       password: passRef.current.value
     };
     try {
-      const res = await axios.post('http://localhost:3001/routes/users/login', user);
-      myStorage.setItem('user', res.data.username);
-      setCurrentUser(res.data.username);
+      const res = await findUser(user);
+      myStorage.setItem('user', res.username);
+      setCurrentUser(res.username);
       setShowLogin(false);
     } catch (e) {
       console.log(e)
