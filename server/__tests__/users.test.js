@@ -41,12 +41,10 @@ describe('Users testing', () => {
 
     const res = await request.post('/routes/users/register', ).send(user)
     const getUser = await User.findOne({username: "David"})
-    // console.log(getUser.username)
-    // console.log(user.username)
     expect(getUser.username).toBe(user.username)
   })
 
-  it('should register users', async () => {
+  it('should login users', async () => {
 
     const user = {
       username: "David",
@@ -54,11 +52,8 @@ describe('Users testing', () => {
       password: "david"
     }
 
-    const res = await request.post('/routes/users/register', ).send(user)
-    const getUser = await User.findOne({username: "David"})
-    // console.log(getUser.username)
-    // console.log(user.username)
-    expect(getUser.username).toBe(user.username)
+    const reg = await request.post('/routes/users/register', ).send(user)
+    const res = await request.post('/routes/users/login', ).send(user)
+    expect(reg.username).toBe(res.username)
   })
-
 })
