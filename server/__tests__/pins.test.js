@@ -46,4 +46,20 @@ describe('Pins testing', () => {
     const getPin = await Pin.findOne({title: "St.John, Bla bla"})
     expect(getPin.title).toBe(pin.title)
   })
+
+  it('should get all pin', async () => {
+
+    const pin = {
+      username: "Frank",
+      title: "St.John, Bla bla",
+      description: "YAYYYYYYYY",
+      rating: "4",
+      latitude: "20.6919",
+      longitude: "-72.8804"
+    }
+
+    const res = await request.post('/routes/pins/').send(pin)
+    const getPin = await Pin.find()
+    expect(getPin.title).toBe(res.title)
+  })
 })
