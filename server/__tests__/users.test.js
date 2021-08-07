@@ -30,7 +30,7 @@ describe('Users tests', () => {
       email: "david@david.me",
       password: "david"
     }
-    
+
     const res = await request.post('/routes/users/register', ).send({user})
 
     const username = await User.findOne({user})
