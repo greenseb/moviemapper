@@ -35,7 +35,7 @@ export default function Register({ setShowRegister, myStorage, setCurrentUser })
         <input type='text' placeholder='username' ref={nameRef}/>
         <input type='email' placeholder='email' ref={emailRef}/>
         <input type='password' placeholder='password' ref={passRef}/>
-        <button className='registerButton' data-testid="register-user">Register</button>
+        <button className='registerButton' id="register-btn" data-testid="register-user">Register</button>
       </form>
       <Close className='registerClose' onClick={()=>setShowRegister(false)}/>
     </div>

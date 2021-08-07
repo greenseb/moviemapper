@@ -146,7 +146,7 @@ function App() {
                   <option value='4'>4</option>
                   <option value='5'>5</option>
                 </select>
-                <button className='submitButton' type='submit'>Add Pin</button>
+                <button className='submitButton' id="addpin-btn" type='submit'>Add Pin</button>
               </form>
             </div>
         </Popup>
