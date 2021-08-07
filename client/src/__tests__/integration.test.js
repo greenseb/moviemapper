@@ -12,9 +12,11 @@
 //   initAPI()
 // })
 
-// test('login as an existing user', async () => {
+// test that the logout button appears
+
+// maybe test('login as an existing user', async () => {
 
 // })
 
 
-// // navigate to login
+
