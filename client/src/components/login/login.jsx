@@ -36,7 +36,7 @@ export default function Login({setShowLogin, myStorage, setCurrentUser}) {
       <form onSubmit={handleSubmit}>
         <input type='text' placeholder='username' ref={nameRef}/>
         <input type='password' placeholder='password' ref={passRef}/>
-        <button className='loginButton'>Login</button>
+        <button className='loginButton' data-testid="log-user-in">Login</button>
         {error &&
         <span className='failure'>Something went wrong!</span>
         }
