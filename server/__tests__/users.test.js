@@ -1,41 +1,64 @@
-// const express = require('express');
-// const router = require('../router');
+const express = require('express');
+const router = require('../router');
 const supertest = require('supertest');
 const User = require('../models/user');
-// const mongoose = require('mongoose');
+const mongoose = require('mongoose');
+require('dotenv').config();
 
-// added comment
-describe('Users tests', () => {
-  // const app = express();
-  // app.use(express.json())
-  // app.use(router);
+describe('Users testing', () => {
+  const app = express();
+  app.use(express.json())
+  app.use(router);
   const request = supertest(app);
 
-  // beforeAll(async () => {
-  //   const url = process.env.DB_CONNECT_TEST
-  //   await mongoose.connect(url, {
-  //     useNewUrlParser: true,
-  //     useUnifiedTopology: true
-  //   })
-  // })
+  beforeAll(async () => {
+    const url = process.env.DB_CONNECT_TEST
+    await mongoose.connect(url, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    })
+  })
 
-  afterEach(async() => {
+  beforeEach(async () => {
+    await jest.setTimeout(60000);
+  });
+
+  afterEach(async () => {
     await User.deleteMany();
   })
 
-  it('should register users', async (done) => {
-    
+  afterAll(async () => {
+    await mongoose.connection.close()
+  })
+
+  it('should register users', async () => {
+
     const user = {
       username: "David",
       email: "david@david.me",
       password: "david"
     }
 
-    const res = await request.post('/routes/users/register', ).send({user})
+    const res = await request.post('/routes/users/register', ).send(user)
+    const getUser = await User.findOne({username: "David"})
+    // console.log(getUser.username)
+    // console.log(user.username)
+    expect(getUser.username).toBe(user.username)
+  })
 
-    const username = await User.findOne({user})
-    expect(username).toBe(user.username)
-    done()
+  it('should register users', async () => {
+
+    const user = {
+      username: "David",
+      email: "david@david.me",
+      password: "david"
+    }
+
+    const res = await request.post('/routes/users/register', ).send(user)
+    const getUser = await User.findOne({username: "David"})
+    // console.log(getUser.username)
+    // console.log(user.username)
+    expect(getUser.username).toBe(user.username)
   })
 
 })
