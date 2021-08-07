@@ -47,14 +47,14 @@ const getAllPins = async () => {
   }
 }
 
-const addPin = async (username, title, description, rating, latitude, longitude) => {
+const addPin = async (pin) => {
   try {
     const res = await fetch(`${pinsUrl}`, {
       method: 'POST',
       headers: {
         "Content-type": "application/json",
       },
-      body: JSON.stringify({username, title, description, rating, latitude, longitude}) 
+      body: JSON.stringify(pin) 
     });
     return await res.json();
   } catch (e) {
