@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 import { Room } from '@material-ui/icons';
 import Register from './components/register/register';

@@ -1,7 +1,6 @@
 import './login.css'
 import { Room, Close } from '@material-ui/icons'
 import { useRef, useState } from 'react';
-import axios from 'axios';
 import {findUser} from '../../services/ApiService';
 
 export default function Login({setShowLogin, myStorage, setCurrentUser}) {

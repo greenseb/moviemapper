@@ -1,7 +1,6 @@
 import './register.css'
 import { Room, Close } from '@material-ui/icons'
-import { useRef, useState } from 'react';
-import axios from 'axios';
+import { useRef } from 'react';
 import {addUser} from '../../services/ApiService';
 
 export default function Register({ setShowRegister, myStorage, setCurrentUser }) {
