@@ -52,8 +52,8 @@ describe('Users testing', () => {
       password: "david"
     }
 
-    const reg = await request.post('/routes/users/register', ).send(user)
-    const res = await request.post('/routes/users/login', ).send(user)
+    const res = await request.post('/routes/users/register', ).send(user)
+    const reg = await request.post('/routes/users/login', ).send(user)
     expect(reg.username).toBe(res.username)
   })
 })
