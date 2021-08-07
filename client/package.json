@@ -5,7 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^4.12.2",
     "@material-ui/icons": "^4.11.2",
-    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
@@ -19,11 +19,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-<<<<<<< HEAD
-    "test": "react-scripts test --watchAll=false --runInBand",
-=======
     "test": "react-scripts test --watchAll=false --runInBand --testEnvironment=node",
->>>>>>> 23c5693f2250c458c6375aadb34b3a46a6783f5c
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
