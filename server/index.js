@@ -1,27 +1,15 @@
 const express = require('express');
 const cors = require('cors');
-const mongoose = require('mongoose');
-const pinRoute = require('./routes/pin');
-const userRoute = require('./routes/users');
+const router = require('./router');
 require('dotenv').config();
+
 const PORT = 3001;
-const DB_CONNECT = process.env.DB_CONNECT;
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect(`${DB_CONNECT}`, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
-  .then(() => {
-    console.log('Database is connected!📍')
-  })
-  .catch((e) => console.log(e));
-
-app.use('/routes/pins', pinRoute);
-app.use('/routes/users', userRoute);
+app.use(router)
 
 app.listen(PORT, (e) => {
   if (e) console.log(e);
