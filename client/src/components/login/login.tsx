@@ -6,8 +6,8 @@ import {findUser} from '../../services/ApiService';
 export default function Login({setShowLogin, myStorage, setCurrentUser}) {
   const [error, setError] = useState(false);
 
-  const nameRef = useRef();
-  const passRef = useRef();
+  const nameRef = useRef<HTMLInputElement | null>(null);
+  const passRef = useRef<HTMLInputElement | null>(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,7 +21,6 @@ export default function Login({setShowLogin, myStorage, setCurrentUser}) {
       setCurrentUser(res.username);
       setShowLogin(false);
     } catch (e) {
-      console.log(e)
       setError(true);
     }
   }

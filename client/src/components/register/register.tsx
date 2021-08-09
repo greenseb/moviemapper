@@ -4,9 +4,9 @@ import { useRef } from 'react';
 import {addUser} from '../../services/ApiService';
 
 export default function Register({ setShowRegister, myStorage, setCurrentUser }) {
-  const nameRef = useRef();
-  const emailRef = useRef();
-  const passRef = useRef();
+  const nameRef = useRef<HTMLInputElement | null>(null);
+  const emailRef = useRef<HTMLInputElement | null>(null);
+  const passRef = useRef<HTMLInputElement | null>(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

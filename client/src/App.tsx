@@ -22,10 +22,10 @@ function App() {
   const [location, setLocation] = useState(null);
   const [movie, setMovie] = useState(null);
   const [newPin, setNewPin] = useState(null);
+  const [rating, setRating] = useState("");
   const [pins, setPins] = useState([]);
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
-  const [rating, setRating] = useState(0);
 
   const handlePopupClick = (id, lat, long) => {
     setCurrentPinId(id);

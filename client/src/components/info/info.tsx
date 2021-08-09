@@ -1,7 +1,6 @@
 import { Star } from '@material-ui/icons';
 import './info.css';
-// import moment from 'moment';
-import * as moment from 'moment';
+import moment from 'moment';
 
 
 export default function Info({pin}) {

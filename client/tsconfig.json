@@ -4,6 +4,7 @@
     "module": "CommonJS",
     "target": "ES6",
     "noImplicitAny": false,
+    "esModuleInterop": true
   },
   "include": [
     "src"
