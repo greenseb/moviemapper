@@ -1,14 +1,20 @@
 import './register.css'
 import { Room, Close } from '@material-ui/icons'
-import { useRef } from 'react';
-import {addUser} from '../../services/ApiService';
+import { useRef, Dispatch, SetStateAction, FormEvent  } from 'react';
+import  { addUser } from '../../services/ApiService';
 
-export default function Register({ setShowRegister, myStorage, setCurrentUser }) {
-  const nameRef = useRef<HTMLInputElement | null>(null);
-  const emailRef = useRef<HTMLInputElement | null>(null);
-  const passRef = useRef<HTMLInputElement | null>(null);
+interface props {
+  setShowRegister: Dispatch<SetStateAction<boolean>>,
+  myStorage: Storage,
+  setCurrentUser:Dispatch<SetStateAction<string>>
+}
 
-  const handleSubmit = async (e) => {
+export default function Register({setShowRegister, myStorage, setCurrentUser}: props) {
+  const nameRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const passRef = useRef<HTMLInputElement>(null);
+
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     const newUser = {
       username: nameRef.current.value,

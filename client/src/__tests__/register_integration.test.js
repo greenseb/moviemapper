@@ -1,11 +1,11 @@
 import React from 'react';
 import App from '../App';
-import {render, screen, waitForElementToBeRemoved} from '@testing-library/React';
+import {render, screen, waitForElementToBeRemoved} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { expect, jest } from '@jest/globals';
 import '@testing-library/jest-dom';
 
-jest.mock('../services/ApiService.js', () => ({
+jest.mock('../services/ApiService', () => ({
   addUser: () => ({username: 'Frank'}),
   getAllPins: () => ([])
 }));

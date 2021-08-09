@@ -5,7 +5,7 @@ import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom/extend-expect';
 import { findUser } from '../services/ApiService';
 
-jest.mock('../services/ApiService.js', () => ({
+jest.mock('../services/ApiService', () => ({
   findUser: () => ({username: 'Alfred'})
 }));
 

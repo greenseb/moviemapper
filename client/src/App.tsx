@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
-import ReactMapGL, { Marker, Popup } from 'react-map-gl';
+import ReactMapGL, { Marker, Popup, MapEvent } from 'react-map-gl';
 import { Room } from '@material-ui/icons';
 import Register from './components/register/register';
 import Login from './components/login/login';
 import Info from './components/info/info';
 import './App.css';
-import {getAllPins, addPin} from './services/ApiService';
+// import { LngLat } from 'mapbox-gl';
+import { getAllPins } from './services/ApiService';
+import  { addPin } from './services/ApiService';
 
 function App() {
   const [viewport, setViewport] = useState({
@@ -15,7 +17,7 @@ function App() {
     longitude: -44.4360,
     zoom: 2.7
   });
-  
+
   const myStorage = window.localStorage;
   const [currentPinId, setCurrentPinId] = useState(null);
   const [currentUser, setCurrentUser] = useState(myStorage.getItem('user'));
@@ -27,20 +29,20 @@ function App() {
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
 
-  const handlePopupClick = (id, lat, long) => {
+  const handlePopupClick = (id: string, lat: number, long: number) => {
     setCurrentPinId(id);
     setViewport({...viewport, latitude: lat, longitude: long})
   };
 
-  const handlePinClick = (e) => {
-    const [longitude,latitude] = e.lngLat;
+  const handlePinClick = (e: MapEvent) => {
+    const [lng, lat]  = e.lngLat;
     setNewPin({
-      latitude,
-      longitude
+      lat,
+      lng
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const newEntry = {
       username: currentUser,
@@ -60,7 +62,7 @@ function App() {
  
   // async fcn inside use effect 
   // bc callback the useEffect has as the 1st argument cannot return a promise
-  useEffect( () => {
+  useEffect(() => {
     (async () => {
       const pins = await getAllPins()
       setPins(pins)
@@ -89,15 +91,21 @@ function App() {
       <ReactMapGL
       {...viewport}
       mapboxApiAccessToken={process.env.REACT_APP_MAPBOX}
-      onViewportChange={nextViewport => setViewport(nextViewport)}
+      onViewportChange={(nextViewport: {
+        width: string,
+        height: string,
+        latitude: number,
+        longitude: number,
+        zoom: number
+      }) => setViewport(nextViewport)}
       mapStyle={process.env.REACT_APP_MAP_STYLES}
       onDblClick={handlePinClick}
     > 
 
-    {pins.map(pin => (
+    {pins.map((pin) => (
     <>
     <Marker
-    latitude={pin.latitude} 
+    latitude={pin.latitude}
     longitude={pin.longitude}
     offsetLeft={-viewport.zoom * 4.25}
     offsetTop={-viewport.zoom * 8.5}
@@ -117,7 +125,7 @@ function App() {
           onClose={()=>setCurrentPinId(null)}
           >
           <div className='popup'>
-            <Info pin={pin}/>
+            <Info {...pin}/>
           </div>
         </Popup>
     )}

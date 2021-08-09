@@ -12,7 +12,7 @@ import '@testing-library/jest-dom';
 //   initAPI()
 // })
 
-jest.mock('../services/ApiService.js', () => ({
+jest.mock('../services/ApiService', () => ({
   findUser: () => ({username: 'Alfred'}),
   getAllPins: () => ([]) // 
 }));

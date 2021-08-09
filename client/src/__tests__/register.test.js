@@ -5,7 +5,7 @@ import {render, waitFor, screen} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom/extend-expect'
 
-jest.mock('../services/ApiService.js', () => ({
+jest.mock('../services/ApiService', () => ({
   addUser: () => ({
     username: "Alfred"
   })

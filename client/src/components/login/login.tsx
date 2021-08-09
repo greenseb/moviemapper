@@ -1,15 +1,21 @@
 import './login.css'
 import { Room, Close } from '@material-ui/icons'
-import { useRef, useState } from 'react';
-import {findUser} from '../../services/ApiService';
+import { useRef, useState, Dispatch, SetStateAction, FormEvent } from 'react';
+import  { findUser } from '../../services/ApiService';
 
-export default function Login({setShowLogin, myStorage, setCurrentUser}) {
+interface props {
+  setShowLogin: Dispatch<SetStateAction<boolean>>,
+  myStorage: Storage,
+  setCurrentUser: Dispatch<SetStateAction<string>> 
+}
+
+export default function Login({setShowLogin, myStorage, setCurrentUser}: props) {
   const [error, setError] = useState(false);
 
   const nameRef = useRef<HTMLInputElement | null>(null);
   const passRef = useRef<HTMLInputElement | null>(null);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     const user = {
       username: nameRef.current.value,
