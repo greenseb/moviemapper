@@ -1,5 +1,6 @@
 const userUrl = "http://localhost:3001/routes/users"
 const pinsUrl = "http://localhost:3001/routes/pins"
+import { pin } from '../interfaces'
 
 export async function addUser (user: {
   username: string,
@@ -53,14 +54,7 @@ export async function getAllPins () {
   }
 }
 
-export async function addPin (pin: {
-  username: string,
-  title: string,
-  description: string,
-  rating: string,
-  latitude: number,
-  longitude: number
-}) {
+export async function addPin (pin: pin) {
   try {
     const res = await fetch(`${pinsUrl}`, {
       method: 'POST',
@@ -74,10 +68,3 @@ export async function addPin (pin: {
     console.log(e);
   }
 }
-
-// module.exports = {
-//   addUser,
-//   findUser,
-//   getAllPins,
-//   addPin
-// }

@@ -1,15 +1,16 @@
 import './register.css'
 import { Room, Close } from '@material-ui/icons'
-import { useRef, Dispatch, SetStateAction, FormEvent  } from 'react';
-import  { addUser } from '../../services/ApiService';
+import { useRef, Dispatch, SetStateAction, FormEvent } from 'react';
+import { addUser } from '../../services/ApiService';
 
 interface props {
   setShowRegister: Dispatch<SetStateAction<boolean>>,
   myStorage: Storage,
-  setCurrentUser:Dispatch<SetStateAction<string>>
+  setCurrentUser: Dispatch<SetStateAction<string|null>>
 }
 
-export default function Register({setShowRegister, myStorage, setCurrentUser}: props) {
+export default function Register({ setShowRegister, myStorage, setCurrentUser }: props) {
+
   const nameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
   const passRef = useRef<HTMLInputElement>(null);
@@ -17,9 +18,9 @@ export default function Register({setShowRegister, myStorage, setCurrentUser}: p
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     const newUser = {
-      username: nameRef.current.value,
-      email: emailRef.current.value,
-      password: passRef.current.value
+      username: nameRef.current ? nameRef.current.value : "",
+      email: emailRef.current ? emailRef.current.value : "",
+      password: passRef.current ? passRef.current.value : ""
     };
     try {
       const res = await addUser(newUser)
@@ -38,12 +39,12 @@ export default function Register({setShowRegister, myStorage, setCurrentUser}: p
         <Room />
       </div>
       <form onSubmit={handleSubmit}>
-        <input type='text' placeholder='username' ref={nameRef}/>
-        <input type='email' placeholder='email' ref={emailRef}/>
-        <input type='password' placeholder='password' ref={passRef}/>
+        <input type='text' placeholder='username' ref={nameRef} />
+        <input type='email' placeholder='email' ref={emailRef} />
+        <input type='password' placeholder='password' ref={passRef} />
         <button className='registerButton' id="register-btn" data-testid="register-user">Register</button>
       </form>
-      <Close className='registerClose' onClick={()=>setShowRegister(false)}/>
+      <Close className='registerClose' onClick={() => setShowRegister(false)} />
     </div>
   )
 }

@@ -1,26 +1,26 @@
 import './login.css'
-import { Room, Close } from '@material-ui/icons'
+import { Room, Close, PausePresentationRounded } from '@material-ui/icons'
 import { useRef, useState, Dispatch, SetStateAction, FormEvent } from 'react';
 import  { findUser } from '../../services/ApiService';
 
 interface props {
   setShowLogin: Dispatch<SetStateAction<boolean>>,
   myStorage: Storage,
-  setCurrentUser: Dispatch<SetStateAction<string>> 
+  setCurrentUser: Dispatch<SetStateAction<string|null>> 
 }
 
 export default function Login({setShowLogin, myStorage, setCurrentUser}: props) {
   const [error, setError] = useState(false);
 
-  const nameRef = useRef<HTMLInputElement | null>(null);
-  const passRef = useRef<HTMLInputElement | null>(null);
-
+  const nameRef = useRef<HTMLInputElement>(null);
+  const passRef = useRef<HTMLInputElement>(null);
+  
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    const user = {
-      username: nameRef.current.value,
-      password: passRef.current.value
-    };
+      const user = {
+        username: nameRef.current ? nameRef.current.value : "",
+        password: passRef.current ? passRef.current.value : "" 
+      };
     try {
       const res = await findUser(user);
       myStorage.setItem('user', res.username);

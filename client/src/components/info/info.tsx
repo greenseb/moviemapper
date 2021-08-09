@@ -1,20 +1,9 @@
 import { Star } from '@material-ui/icons';
 import './info.css';
 import moment from 'moment';
+import {pin} from '../../interfaces'
 
-interface props {
-  _id: string,
-  username: string,
-  title: string,
-  description: string,
-  rating: number,
-  latitude: number,
-  longitude: number,
-  createdAt: Date,
-  updatedAt: Date
-}
-
-export default function Info(pin: props) {
+export default function Info(pin: pin) {
   return (
     <>
       <label>Location</label>
