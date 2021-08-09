@@ -28,7 +28,7 @@ function App() {
     username: "",
     title: "",
     description: "",
-    rating: 0,
+    rating: "",
     latitude: 0,
     longitude: 0
   });
@@ -58,7 +58,7 @@ function App() {
       username: currentUser ? currentUser : "",
       title: location,
       description: movie,
-      rating: newPin.rating,
+      rating: rating,
       latitude: newPin.latitude,
       longitude: newPin.longitude,
     };
@@ -143,7 +143,7 @@ function App() {
             )}
           </>
         ))}
-        {newPin && (
+        {(newPin.latitude != 0 && newPin.longitude != 0) && (
           <Popup
             latitude={newPin.latitude}
             longitude={newPin.longitude}
@@ -154,7 +154,7 @@ function App() {
               username: "",
               title: "",
               description: "",
-              rating: 0,
+              rating: "",
               latitude: 0,
               longitude: 0
             })}

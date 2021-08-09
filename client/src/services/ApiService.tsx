@@ -1,6 +1,6 @@
+import { pin } from '../interfaces'
 const userUrl = "http://localhost:3001/routes/users"
 const pinsUrl = "http://localhost:3001/routes/pins"
-import { pin } from '../interfaces'
 
 export async function addUser (user: {
   username: string,

@@ -3,7 +3,7 @@ export interface pin {
     username: string,
     title: string,
     description: string,
-    rating: number,
+    rating: string,
     latitude: number,
     longitude: number,
     createdAt?: Date,
