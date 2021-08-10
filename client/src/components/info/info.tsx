@@ -1,3 +1,4 @@
+import { useState, Dispatch, SetStateAction } from 'react';
 import { Star } from "@material-ui/icons";
 import Button from "@material-ui/core/Button";
 import "./info.css";
@@ -12,11 +13,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Info(pin: pin) {
+interface props {
+  pin: pin,
+  pins: pin[],
+  setPins: Dispatch<SetStateAction<pin[]>>
+}
+
+
+export default function Info({pin, pins, setPins}: props) {
   const classes = useStyles();
 
   const removePin = async (pin: pin) => {
     await deletePin(pin);
+    setPins(pins.filter((element: pin) => element._id !== pin._id))
   };
 
   return (
@@ -31,7 +40,12 @@ export default function Info(pin: pin) {
         </a>
       </div>
       <label>Movie</label>
-      <p>{pin.description}</p>
+      <div className="movieDetails">
+        <p>{pin.description}</p>
+        <a className="clip" href={pin.video} target="_blank">
+          🎥
+        </a>
+      </div>
       <label>Rating</label>
       <div className="stars">
         {Array(+pin.rating).fill(<Star className="star" />)}
@@ -44,10 +58,9 @@ export default function Info(pin: pin) {
           onClick={() => removePin(pin)}
           className={classes.root}
           variant="outlined"
-          >
+        >
           Delete
         </Button>
-
       </div>
     </>
   );

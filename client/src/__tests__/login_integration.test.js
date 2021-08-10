@@ -1,28 +1,19 @@
 import React from 'react';
 import App from '../App';
-import { render, screen, waitForElementToBeRemoved } from '@testing-library/react';
+import { render, screen, waitForElementToBeRemoved, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
-
-
-
-// beforeEach(() => {
-//   window.localStorage.removeItem('token')
-//   axiosMock.__mock.reset()
-//   initAPI()
-// })
 
 jest.mock('../services/ApiService', () => ({
   findUser: () => ({username: 'Alfred'}),
   getAllPins: () => ([]) // 
 }));
 
-
 // test login 
 test('logout button should appear on screen after logging in', async () => {
-
   // render the app
   render(<App />)
+  
   
   // render login
   userEvent.click(screen.getByRole('button', {name: 'Login'}))

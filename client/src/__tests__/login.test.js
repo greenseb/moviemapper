@@ -9,7 +9,7 @@ jest.mock('../services/ApiService', () => ({
   findUser: () => ({username: 'Alfred'})
 }));
 
-test('should call findUser with the correct credentials', async () => {
+test.only('should call findUser with the correct credentials', async () => {
 
   const setShowLogin = jest.fn();
   const setCurrentUser = jest.fn();

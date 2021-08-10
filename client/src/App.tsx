@@ -36,7 +36,7 @@ function App() {
     longitude: 0,
   });
 
-  const [pins, setPins] = useState<pin[]>();
+  const [pins, setPins] = useState<pin[]>([]);
   const [showPopup, setShowPopup] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
@@ -71,6 +71,7 @@ function App() {
       video: video
     };
     await addPin(newEntry)
+    setPins((prev: pin[]) => [...prev, newEntry])
     setShowPopup(false)
   }
 
@@ -79,14 +80,12 @@ function App() {
     setCurrentUser("");
   }
 
-  // async fcn inside use effect
-  // bc callback the useEffect has as the 1st argument cannot return a promise
   useEffect(() => {
     (async () => {
       const pins = await getAllPins()
       setPins(pins)
     })()
-  }, [pins])
+  }, [])
 
   return (
     <div className="App">
@@ -146,7 +145,7 @@ function App() {
                 onClose={() => setCurrentPinId("")}
               >
                 <div className='popup'>
-                  <Info {...pin} />
+                  <Info pin={pin} pins={pins} setPins={setPins} />
                 </div>
               </Popup>
             )}

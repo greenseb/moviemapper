@@ -11,7 +11,7 @@ jest.mock('../services/ApiService', () => ({
 }));
 
 // test register
-test('logout butto should appear on screen after registering', async () => {
+test('logout button should appear on screen after registering', async () => {
 
   // render the app
   render(<App />)
@@ -29,5 +29,5 @@ test('logout butto should appear on screen after registering', async () => {
   expect(screen.queryByRole('button', {name: 'Login'})).not.toBeInTheDocument()
   expect(screen.queryByRole('button', {name: 'Register'})).not.toBeInTheDocument()
 
-  // screen.debug()
+  // // screen.debug()
 })
