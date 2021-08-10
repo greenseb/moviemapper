@@ -1,5 +1,5 @@
 import './login.css'
-import { Room, Close, PausePresentationRounded } from '@material-ui/icons'
+import { Room, Close } from '@material-ui/icons'
 import { useRef, useState, Dispatch, SetStateAction, FormEvent } from 'react';
 import  { findUser } from '../../services/ApiService';
 

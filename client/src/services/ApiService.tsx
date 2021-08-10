@@ -68,3 +68,18 @@ export async function addPin (pin: pin) {
     console.log(e);
   }
 }
+
+export async function deletePin (pin: pin) {
+  try {
+    const res = await fetch(`${pinsUrl}`, {
+      method: 'DELETE',
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(pin)
+    });
+    return await res
+  } catch (e) {
+    console.log(e);
+  }
+}

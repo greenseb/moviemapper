@@ -35,6 +35,7 @@ function App() {
 
   const [rating, setRating] = useState("");
   const [pins, setPins] = useState<pin[]>();
+  const [showPopup, setShowPopup] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
 
@@ -44,6 +45,7 @@ function App() {
   };
 
   const handlePinClick = (e: MapEvent) => {
+    setShowPopup(true)
     const [lng, lat] = e.lngLat;
     setNewPin({
       ...newPin,
@@ -51,6 +53,7 @@ function App() {
       longitude: lng
     });
   };
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -62,7 +65,8 @@ function App() {
       latitude: newPin.latitude,
       longitude: newPin.longitude,
     };
-    addPin(newEntry)
+    await addPin(newEntry)
+    setShowPopup(false)
   }
 
   const handleLogout = () => {
@@ -70,14 +74,14 @@ function App() {
     setCurrentUser("");
   }
 
-  // async fcn inside use effect 
+  // async fcn inside use effect
   // bc callback the useEffect has as the 1st argument cannot return a promise
   useEffect(() => {
     (async () => {
       const pins = await getAllPins()
       setPins(pins)
     })()
-  }, [])
+  }, [pins])
 
   return (
     <div className="App">
@@ -143,7 +147,7 @@ function App() {
             )}
           </>
         ))}
-        {(newPin.latitude != 0 && newPin.longitude != 0) && (
+        {showPopup && (
           <Popup
             latitude={newPin.latitude}
             longitude={newPin.longitude}
