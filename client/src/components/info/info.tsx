@@ -30,8 +30,6 @@ export default function Info({pin, pins, setPins}: props) {
 
   return (
     <>
-      {/* <div className="wrapper" style={{backgroundImage: `url(${pin.image})`}}> */}
-
       <label>Location</label>
       <div className="location">
         <h4>{pin.title}</h4>

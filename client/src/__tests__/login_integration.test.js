@@ -13,8 +13,7 @@ jest.mock('../services/ApiService', () => ({
 test('logout button should appear on screen after logging in', async () => {
   // render the app
   render(<App />)
-  
-  
+   
   // render login
   userEvent.click(screen.getByRole('button', {name: 'Login'}))
   expect(screen.getByPlaceholderText(/username/)).toBeInTheDocument()

@@ -78,6 +78,14 @@ function App() {
   const handleLogout = () => {
     myStorage.removeItem('user');
     setCurrentUser("");
+    setCurrentPinId("");
+    setViewport({
+      width: '85vw',
+      height: '80vh',
+      latitude: 43.3781,
+      longitude: -44.4360,
+      zoom: 2.7
+    });
   }
 
   useEffect(() => {
@@ -93,9 +101,9 @@ function App() {
       <h1 className='movieMapper'>Movie Mapper<Room className='titleLogo' style={{ fontSize: 36.2 }}></Room></h1>
       {currentUser ? (<button className='button logout' onClick={handleLogout}>Logout</button>)
         : (<div className='buttons'>
-          <button className='button login' onClick={() => setShowLogin(true)}>Login</button>
+          <button className='button login' onClick={() => {setShowLogin(true); setShowRegister(false)}}>Login</button>
           <div className="divider" />
-          <button className='button register' onClick={() => setShowRegister(true)}>Register</button>
+          <button className='button register' onClick={() => {setShowRegister(true); setShowLogin(false)}}>Register</button>
         </div>)}
       {showRegister && <Register
         setShowRegister={setShowRegister}
