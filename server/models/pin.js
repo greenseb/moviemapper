@@ -26,9 +26,18 @@ const pinSchema = new mongoose.Schema({
   longitude: {
     type: Number,
     required: true
-   }
+  },
+  image: {
+    type: String,
+    required: false
+  },
+  video: {
+    type: String,
+    required: false
+  }
   },
 { timestamps: true }
+
 );
 
 module.exports = mongoose.model('Pin', pinSchema);

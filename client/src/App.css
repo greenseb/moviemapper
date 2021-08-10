@@ -74,9 +74,9 @@
   background-color: white;
   display: flex;
   flex-direction: column;
-  height: 310px;
+  height: 23rem;
   justify-content: space-around;
-  width: 350px;
+  width: 23rem;
 }
 
 label {
@@ -95,9 +95,9 @@ h4, p {
 form {
   display: flex;
   flex-direction: column;
-  height: 240px;
-  justify-content: space-around;
-  width: 350px;
+  justify-content: space-between;
+  height: 23rem;
+  width: 23rem;
 }
 
 input, textarea {
@@ -117,6 +117,11 @@ input:focus, textarea:focus {
   outline:none;
 }
 
+#addpin-btn {
+  margin-top: 2rem;
+}
+
+/* id="addpin-btn" */
 .submitButton {
   background-color: coral;
   border: none;
@@ -125,6 +130,9 @@ input:focus, textarea:focus {
   cursor: pointer;
   font-family: Staatliches;
   font-size: 1em;
-  margin-top: 5px;
   padding: 5px;
+}
+
+.inputPopup {
+  height: 23rem;
 }

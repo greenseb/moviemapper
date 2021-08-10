@@ -6,6 +6,8 @@ export interface pin {
     rating: string,
     latitude: number,
     longitude: number,
+    image?: string,
+    video?: string,
     createdAt?: Date,
     updatedAt?: Date
 }

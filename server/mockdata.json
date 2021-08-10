@@ -6,6 +6,8 @@
       "rating": "5",
       "latitude": "30.32896",
       "longitude": "35.444832",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/4/44/Great_Temple_of_Petra_02.jpg",
+      "video": "https://www.youtube.com/watch?v=t7bd0IQ5nDE",
       "createdAt": "2021-07-31T14:47:02.058Z",
       "updatedAt": "2021-07-31T14:47:02.058Z"
   },
@@ -16,26 +18,10 @@
       "rating": "5",
       "latitude": "17.6919",
       "longitude": "-64.8804",
+      "image": "https://www.passagemaker.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTQ2NDM4NjIyNTc3ODI5MzU3/st-croix-us-virgin-islands.jpg",
+      "video": "https://www.youtube.com/watch?v=zRBl0GPBm4o",
       "createdAt": "2021-07-31T14:47:02.058Z",
       "updatedAt": "2021-07-31T14:47:02.058Z"
   }
 ]
 
-[
-  {
-      "_id": "61055f205805df55b258d6ab",
-      "username": "Jane",
-      "email": "jane@email.com",
-      "password": "$2b$10$b5u0PmKYEHOpkfQSeA58r.Z4Ca373QFdIQh6Ks96Jm3ZAE0Vt9h3y",
-      "createdAt": "2021-07-31T14:47:02.058Z",
-      "updatedAt": "2021-07-31T14:47:02.058Z"
-  },
-  {
-      "_id": "610560385805df55b258d6b2",
-      "username": "Steph",
-      "email": "steph@email.com",
-      "password": "$2b$10$kMQuKTfxkEQ.sI9p.tg.3uXkAq4IOXcggvEfrQJpoGOjtlCv5UWue",
-      "createdAt": "2021-07-31T14:47:02.058Z",
-      "updatedAt": "2021-07-31T14:47:02.058Z"
-  }
-]

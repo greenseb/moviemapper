@@ -5,7 +5,6 @@ import Register from './components/register/register';
 import Login from './components/login/login';
 import Info from './components/info/info';
 import './App.css';
-// import { LngLat } from 'mapbox-gl';
 import { getAllPins } from './services/ApiService';
 import { addPin } from './services/ApiService';
 import { pin } from './interfaces'
@@ -24,20 +23,24 @@ function App() {
   const [currentUser, setCurrentUser] = useState<string | null>(myStorage.getItem('user'));
   const [location, setLocation] = useState("");
   const [movie, setMovie] = useState("");
+  const [rating, setRating] = useState("");
+  const [image, setImage] = useState("");
+  const [video, setVideo] = useState("");
+  
   const [newPin, setNewPin] = useState<pin>({
     username: "",
     title: "",
     description: "",
     rating: "",
     latitude: 0,
-    longitude: 0
+    longitude: 0,
   });
 
-  const [rating, setRating] = useState("");
   const [pins, setPins] = useState<pin[]>();
   const [showPopup, setShowPopup] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
+
 
   const handlePopupClick = (id: string, lat: number, long: number) => {
     setCurrentPinId(id);
@@ -64,6 +67,8 @@ function App() {
       rating: rating,
       latitude: newPin.latitude,
       longitude: newPin.longitude,
+      image: image,
+      video: video
     };
     await addPin(newEntry)
     setShowPopup(false)
@@ -163,10 +168,12 @@ function App() {
               longitude: 0
             })}
           >
-            <div>
+            <div className='inputPopup'>
               <form onSubmit={handleSubmit}>
                 <label>Location</label>
                 <input placeholder='Enter a location' onChange={(e) => setLocation(e.target.value)} />
+                <label>Image</label>
+                <textarea placeholder='Add link to location image' onChange={(e) => setImage(e.target.value)} />
                 <label>Movie</label>
                 <textarea placeholder='This place appeared in...' onChange={(e) => setMovie(e.target.value)} />
                 <label>Rating</label>
@@ -177,6 +184,8 @@ function App() {
                   <option value='4'>4</option>
                   <option value='5'>5</option>
                 </select>
+                <label>Video</label>
+                <textarea placeholder='Add link to Youtube video' onChange={(e) => setVideo(e.target.value)} />
                 <button className='submitButton' id="addpin-btn" type='submit'>Add Pin</button>
               </form>
             </div>
