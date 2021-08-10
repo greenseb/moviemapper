@@ -41,7 +41,6 @@ function App() {
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
 
-
   const handlePopupClick = (id: string, lat: number, long: number) => {
     setCurrentPinId(id);
     setViewport({ ...viewport, latitude: lat, longitude: long })
@@ -56,7 +55,6 @@ function App() {
       longitude: lng
     });
   };
-
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

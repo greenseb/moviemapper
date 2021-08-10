@@ -21,7 +21,9 @@ exports.getPin = async (req, res) => {
 
 exports.removePin = async (req, res) => {
   try {
-    await Pin.deleteOne({_id: req.body._id})
+    console.log(req.body)
+    console.log(req.body._id)
+    await Pin.deleteOne({latitude: req.body.latitude})
     res.send().status(204)
   } catch (e) {
     res.status(500).json(e)

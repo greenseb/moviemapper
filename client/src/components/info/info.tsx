@@ -34,7 +34,7 @@ export default function Info({pin, pins, setPins}: props) {
       <div className="location">
         <h4>{pin.title}</h4>
         <a href={pin.image} target="_blank">
-          <img src={pin.image} />
+          <img id="location-image" src={pin.image} />
         </a>
       </div>
       <label>Movie</label>
@@ -55,6 +55,7 @@ export default function Info({pin, pins, setPins}: props) {
         <Button
           onClick={() => removePin(pin)}
           className={classes.root}
+          id="delete-btn"
           variant="outlined"
         >
           Delete
