@@ -1,7 +1,6 @@
-const router = require('express').Router();
 const Pin = require('../models/pin');
 
-router.post('/', async (req, res) => {
+exports.addPin = async (req, res) => {
   const newPin = new Pin(req.body);
   try {
     const savedPin = await newPin.save();
@@ -9,15 +8,22 @@ router.post('/', async (req, res) => {
   } catch (e) {
     res.status(500).json(e)
   }
-});
+};
 
-router.get('/', async (req, res) => {
+exports.getPin = async (req, res) => {
   try {
     const pins = await Pin.find();
     res.status(200).json(pins);
   } catch (e) {
     res.status(500).json(e)
   }
-})
+};
 
-module.exports = router;
+exports.removePin = async (req, res) => {
+  try {
+    await Pin.deleteOne({latitude: req.body.latitude})
+    res.send().status(204)
+  } catch (e) {
+    res.status(500).json(e)
+  }
+}

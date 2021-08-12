@@ -1,0 +1,27 @@
+[
+  {
+      "username": "Seb",
+      "title": "Great Temple, Petra",
+      "description": "The city’s carved rose-red sandstone rock facades, tombs, and temples became known around the world with its appearance in Indiana Jones and The Last Crusade in 1989.",
+      "rating": "5",
+      "latitude": "30.32896",
+      "longitude": "35.444832",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/4/44/Great_Temple_of_Petra_02.jpg",
+      "video": "https://www.youtube.com/watch?v=t7bd0IQ5nDE",
+      "createdAt": "2021-07-31T14:47:02.058Z",
+      "updatedAt": "2021-07-31T14:47:02.058Z"
+  },
+  {
+      "username": "Steph",
+      "title": "St.Croix, U.S. Virgin Islands",
+      "description": "Andy and Red are reunited on a beach in Mexico at the end of Shawshank Redemption. However, the final scene was filmed here at Sandy Point",
+      "rating": "5",
+      "latitude": "17.6919",
+      "longitude": "-64.8804",
+      "image": "https://www.passagemaker.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTQ2NDM4NjIyNTc3ODI5MzU3/st-croix-us-virgin-islands.jpg",
+      "video": "https://www.youtube.com/watch?v=zRBl0GPBm4o",
+      "createdAt": "2021-07-31T14:47:02.058Z",
+      "updatedAt": "2021-07-31T14:47:02.058Z"
+  }
+]
+

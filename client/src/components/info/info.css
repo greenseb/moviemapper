@@ -5,3 +5,40 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
+
+img {
+  height: 5rem;
+  width: 5rem;
+  border-radius: 50px;
+  
+}
+
+.clip {
+  font-size: 4rem;
+  height: 5rem;
+  width: 5rem;
+  margin-left: 1.5rem
+}
+
+.location {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.createdBy {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: x-small;
+  align-items: flex-end;
+}
+
+.movieDetails {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: small;
+  align-items: center;
+}

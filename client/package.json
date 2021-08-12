@@ -5,9 +5,10 @@
   "dependencies": {
     "@material-ui/core": "^4.12.2",
     "@material-ui/icons": "^4.11.2",
-    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "@types/react-map-gl": "^5.2.10",
     "axios": "^0.21.1",
     "moment": "^2.29.1",
     "react": "^17.0.2",
@@ -19,7 +20,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --watchAll=false --runInBand --testEnvironment=node",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -39,5 +40,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/react-dom": "^17.0.9",
+    "cypress": "^8.2.0",
+    "cypress-testing-library": "^4.0.0",
+    "typescript": "^4.3.5"
   }
 }
