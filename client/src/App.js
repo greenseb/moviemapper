@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Room } from '@material-ui/icons';
 import Register from './components/register/register';
 import Login from './components/login/login';
@@ -16,16 +16,26 @@ function App() {
     setCurrentUser(null);
   }
 
+  const loginHandle = () => {
+    setShowLogin(true)
+    setShowRegister(false)
+  }
+
+  const registerHandle = () => {
+    setShowRegister(true)
+    setShowLogin(false)
+  }
+
   return (
     <div className="App">
       <h1 className='movieMapper'>Movie Mapper<Room className='titleLogo' style={{fontSize:36.2}}></Room></h1>
       {currentUser ? (<button className='button logout' onClick={handleLogout}>Logout</button>) 
       : (<div className='buttons'>
-        <button className='button login' onClick={()=>setShowLogin(true)}>Login</button>
+        <button className='button login' onClick={loginHandle}>Login</button>
         <div className="divider"/>
-        <button className='button register' onClick={()=>setShowRegister(true)}>Register</button>
+        <button className='button register' onClick={registerHandle}>Register</button>
         </div>)}
-        {showRegister && <Register setShowRegister={setShowRegister}/>}
+        {showRegister && <Register setShowRegister={setShowRegister} setShowLogin={setShowLogin}/>}
         {showLogin && <Login 
         setShowLogin={setShowLogin} 
         myStorage={myStorage}

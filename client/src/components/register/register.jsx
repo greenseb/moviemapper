@@ -3,7 +3,7 @@ import { Room, Close } from '@material-ui/icons'
 import { useRef, useState } from 'react';
 import axios from 'axios';
 
-export default function Register({setShowRegister}) {
+export default function Register({setShowRegister, setShowLogin}) {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
   const nameRef = useRef();
@@ -21,6 +21,8 @@ export default function Register({setShowRegister}) {
       await axios.post('http://localhost:3001/routes/users/register', newUser)
       setError(false);
       setSuccess(true);
+      setShowLogin(true)
+      setShowRegister(false)
     } catch (e) {
       console.log(e)
       setError(true);
