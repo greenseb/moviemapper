@@ -1,5 +1,7 @@
 # Movie Mapper
 
+![Movie Mapper Preview](https://i.ibb.co/306bJVS/mapper.png)
+
 This web app offers an interactive map where you can view and drop pins. The pins represent famous movie locations and give information such as:
 
 * Location
