@@ -1,6 +1,6 @@
 # Movie Mapper
 
-![Movie Mapper Preview](https://i.ibb.co/306bJVS/mapper.png)
+<img src="./assets/mapper.png" alt="mapper preview" width="950" >
 
 This web app offers an interactive map where you can view and drop pins. The pins represent famous movie locations and give information such as:
 
@@ -22,8 +22,10 @@ ___
  5. Now run `nodemon` inside 'server' and `npm start` inside 'client'
  6. The app should appear in the browser where you can register and login
  7. You should be able to view other users' pins now and double click to add your own
+ 
+ ___
 
-For this app I used the following tech stack:
+**Tech Stack**
 
 * MongoDB & Mongoose
 * Express
@@ -33,3 +35,8 @@ For this app I used the following tech stack:
 * Bcrypt
 * Mapbox
 
+___
+
+**Developer**
+
+[Seb Green's LinkedIn](https://www.linkedin.com/in/sebastiangreen13/)
