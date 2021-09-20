@@ -28,6 +28,7 @@ ___
 **Tech Stack**
 
 * MongoDB & Mongoose
+* TypeScript
 * Express
 * React
 * NodeJS
